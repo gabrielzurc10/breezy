@@ -1,6 +1,6 @@
-# Part 1: Why the nav was broken and how it was fixed
+# Part 1: Technical Explanation
 
-## What was happening
+## 1. The root cause
 
 At the bottom of the file there is a script that handles clicks on the nav links:
 
@@ -15,7 +15,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 ```
 
-The problem is `a.href`.
+The root cause is `a.href`.
 
 For a link written as `<a href="#features">`, it seems like `a.href` should return
 `"#features"`. It does not. It returns the full URL, something like:
@@ -24,30 +24,11 @@ For a link written as `<a href="#features">`, it seems like `a.href` should retu
 file:///Users/you/Desktop/breezy-fulltime-test.html#features
 ```
 
-`document.querySelector()` expects a CSS selector like `"#features"`, not a URL. Handing
-it that URL string makes it throw an error, and the function stops right there.
-`scrollIntoView` never runs.
+`document.querySelector()` expects a CSS selector like `"#features"`, not a URL.
+Handing it that URL string makes it throw an error, and the function stops right
+there. `scrollIntoView` never runs.
 
-The reason the page appears completely unresponsive: the line before the error is
-`e.preventDefault()`, which tells the browser to skip its normal link behavior. Clicking
-`<a href="#features">` would normally jump to that section without any JavaScript,
-because browsers handle that natively. This script disables that behavior first, then
-fails before providing its own replacement. Both are lost.
-
-## Why the behavior was more misleading on mobile
-
-The mobile menu links have two click handlers:
-
-```html
-<a href="#features" onclick="closeMobile()">Features</a>
-```
-
-The `closeMobile()` handler is separate from the broken scroll script, and it works
-correctly. On a phone, tapping a link closes the menu, which makes the tap appear
-successful, but the page never scrolls. One handler succeeded, the other failed, and
-only the successful one is visible to the user.
-
-## The fix
+## 2. The fix
 
 ```js
 // fixed
@@ -77,74 +58,48 @@ Three changes:
 3. Links that are just `href="#"` (the placeholder links all over the page) are skipped
    cleanly. `querySelector('#')` would also throw an error, so they needed handling too.
 
-### A follow up issue: the fixed header
+With the handler fixed, all nav links smooth scroll to their sections, and a
+`scroll-margin-top` rule keeps each scrolled to section from landing underneath the
+fixed header.
 
-Once scrolling worked, a new problem showed up. The page has a header pinned to the top
-of the screen, about 140px tall. Scrolling to a section left its title hidden behind the
-header. CSS has a property made exactly for this:
+## 3. Why the bug happens, and the console errors
 
-```css
-[id] { scroll-margin-top: 156px; }
-@media (max-width: 1024px) {
-  [id] { scroll-margin-top: 120px; }  /* the header is shorter on small screens */
-}
-```
+Two things combine to make the page feel completely dead:
 
-`scroll-margin-top` tells the browser to stop that many pixels early when scrolling to
-an element. It works for both the JavaScript scroll and normal link jumps.
+- The line before the error is `e.preventDefault()`, which tells the browser to skip
+  its normal link behavior. Clicking `<a href="#features">` would normally jump to
+  that section without any JavaScript, because browsers handle that natively. The
+  script disables that working behavior first, then fails before providing its own
+  replacement. Both are lost.
+- On mobile the failure is masked. The mobile menu links have two click handlers:
 
-### A second bug found along the way
+  ```html
+  <a href="#features" onclick="closeMobile()">Features</a>
+  ```
 
-The "Watch the Story" button in the hero was also broken, for a different reason:
+  The `closeMobile()` handler is separate from the broken scroll script and works
+  correctly. Tapping a link closes the menu, which makes the tap appear successful,
+  but the page never scrolls. One handler succeeded, the other failed, and only the
+  successful one is visible to the user.
 
-```html
-<button onclick="showToast('📺 Playing: \"The Art of Nothing\" (3 min)')">
-```
-
-The `\"` here is JavaScript style quote escaping, but this is an HTML attribute, and
-HTML does not treat backslashes specially. The attribute actually ends at the first
-inner quote, leaving behind an incomplete JavaScript statement that throws an error
-when clicked. In HTML the correct way to place a quote inside a quoted attribute is
-`&quot;`, so that is the fix.
-
-### A third bug: the toast notification never fully hides
-
-The toast (the small dark notification box used by several buttons) hides by sliding
-down out of view:
-
-```css
-.toast { bottom: 24px; transform: translateY(120%); }
-```
-
-Sliding down 120% of its own height is not enough, because the box also sits 24px
-above the bottom of the screen. The top of the box therefore stays on screen as a
-small dark sliver in the bottom right corner, permanently and after every toast.
-The fix slides it down by its full height plus the gap:
-
-```css
-.toast { transform: translateY(calc(100% + 24px)); }
-```
-
-## Were the console errors meaningful or misleading?
-
-Clicking any nav link prints this:
+Clicking any nav link prints this console error:
 
 ```
 Uncaught SyntaxError: Failed to execute 'querySelector' on 'Document':
 'file:///.../breezy-fulltime-test.html#features' is not a valid selector.
 ```
 
-They are both, in different respects.
+**Meaningful or misleading? Both, in different respects.**
 
 The error is meaningful because the full diagnosis is contained in the message itself.
 A complete URL appears where a selector should be, and the stack trace points at the
-exact line, it leads directly to the fix.
+exact line and it leads directly to the fix.
 
 It misleads in three ways:
 
 1. Timing. The error only appears on click. Opening the console, seeing it clean, and
-   concluding that there are no JavaScript errors misses it completely. The console has
-   to be open while clicking.
+   concluding that there are no JavaScript errors misses it completely. The console
+   has to be open while clicking.
 2. Wording. "Is not a valid selector" suggests a mistake in selector syntax. The real
    problem is that the wrong kind of value (a URL) was passed in. The error also says
    nothing about the larger issue: `preventDefault()` had already disabled the
