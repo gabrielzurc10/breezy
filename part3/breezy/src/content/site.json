@@ -1,0 +1,14 @@
+{
+  "name": "Breezy",
+  "badge": "Now serving 47 countries",
+  "heroSub": "Hand-curated atmospheric blends sourced from the world's finest altitudes. Because you deserve air with character.",
+  "socialProofCount": "12,847",
+  "logos": ["Lungify", "AirBnBreeze", "OxyCorp", "NostrilTech", "GaspWorks"],
+  "stats": [
+    { "value": "12M+", "label": "Breaths facilitated" },
+    { "value": "99.97%", "label": "Oxygen uptime SLA" },
+    { "value": "47", "label": "Countries served" },
+    { "value": "0", "label": "Customers who stopped breathing*" }
+  ],
+  "footerBlurb": "Making the world's most abundant resource feel exclusive since 2026. Venture-backed. Carbon-confused."
+}

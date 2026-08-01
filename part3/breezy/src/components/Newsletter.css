@@ -1,0 +1,22 @@
+.newsletter { background: #fff; text-align: center; }
+.nl-box {
+  background: var(--slate-900); border-radius: var(--radius-lg);
+  padding: 64px 40px; max-width: 720px; margin: 0 auto; color: #fff;
+}
+.nl-box h2 { font-size: 2.2rem; margin-bottom: 12px; }
+.nl-box > p { color: var(--slate-300); margin-bottom: 28px; }
+.nl-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; }
+.nl-form input {
+  flex: 1; padding: 14px 18px; border-radius: 100px;
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08); color: #fff;
+  font-size: 0.95rem; font-family: inherit; outline: none;
+  transition: border-color 0.2s;
+}
+.nl-form input::placeholder { color: var(--slate-400); }
+.nl-form input:focus { border-color: var(--sky-400); }
+.nl-form .btn-primary { white-space: nowrap; }
+.nl-fine { font-size: 0.75rem; color: var(--slate-500); margin-top: 14px; }
+@media (max-width: 768px) {
+  .nl-form { flex-direction: column; }
+}

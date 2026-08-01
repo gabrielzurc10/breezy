@@ -1,0 +1,38 @@
+[
+  {
+    "icon": "🏔️",
+    "iconBg": "#dbeafe",
+    "title": "Mountain-Sourced™",
+    "body": "Each batch is harvested at peak altitude by our trained Air Sommeliers using proprietary glass jars."
+  },
+  {
+    "icon": "🧬",
+    "iconBg": "#fce7f3",
+    "title": "DNA-Matched Blends",
+    "body": "Our AI analyzes your 23andMe data to craft a bespoke nitrogen-oxygen ratio. Patent pending."
+  },
+  {
+    "icon": "🌿",
+    "iconBg": "#d1fae5",
+    "title": "Carbon-Neutral Carbon",
+    "body": "We offset our CO₂ by thinking really hard about trees. It's basically the same thing."
+  },
+  {
+    "icon": "⚡",
+    "iconBg": "#fef3c7",
+    "title": "Instant Delivery",
+    "body": "Our patented “Open a Window” technology ensures same-second delivery anywhere on Earth."
+  },
+  {
+    "icon": "🔬",
+    "iconBg": "#ede9fe",
+    "title": "Lab-Verified Purity",
+    "body": "Every batch is tested by scientists who definitely exist and are not just our intern in a lab coat."
+  },
+  {
+    "icon": "🤝",
+    "iconBg": "#ffe4e6",
+    "title": "Community Breathing",
+    "body": "Join our Discord of 50k+ breathers. Share tips, techniques, and which nostril you prefer."
+  }
+]

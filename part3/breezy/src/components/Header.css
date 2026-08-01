@@ -1,0 +1,165 @@
+.header-wrap {
+  position: sticky; top: 0; z-index: 100;
+}
+
+/* Utility bar */
+.utility-bar {
+  background: var(--slate-900);
+  display: flex; justify-content: flex-end; align-items: center;
+  padding: 0 32px; height: 36px; gap: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.utility-bar a {
+  color: rgba(255, 255, 255, 0.7); text-decoration: none;
+  font-size: 0.75rem; font-weight: 500; letter-spacing: 0.5px;
+  display: flex; align-items: center; gap: 6px;
+  transition: color 0.2s;
+}
+.utility-bar a:hover { color: #fff; }
+.util-icon { font-size: 0.85rem; }
+
+/* Mid bar: brand and secondary links */
+.mid-bar {
+  background: var(--slate-800);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 32px; height: 56px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900; font-size: 1.5rem;
+  color: #fff; text-decoration: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-brand em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--sky-400), var(--violet-500));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.mid-links { display: flex; align-items: center; gap: 28px; }
+.mid-links a {
+  color: rgba(255, 255, 255, 0.75); text-decoration: none;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px;
+  text-transform: uppercase; transition: color 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.mid-links a:hover { color: #fff; }
+.mini-arrow { font-size: 0.6rem; }
+.mid-links .book-btn {
+  background: var(--sky-500); color: #fff;
+  padding: 8px 20px; border-radius: 4px;
+  transition: background 0.2s;
+}
+.mid-links .book-btn:hover { background: var(--sky-600); }
+
+/* Main nav bar */
+.main-nav {
+  background: var(--slate-700);
+  display: flex; align-items: center;
+  padding: 0 32px; height: 48px;
+}
+.location-badge {
+  display: flex; align-items: center; gap: 8px;
+  margin-right: 24px; color: #fff; font-size: 0.85rem;
+  font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  white-space: nowrap;
+}
+.location-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(135deg, #34d399, #0ea5e9);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem;
+}
+.main-nav-links { display: flex; align-items: center; height: 100%; }
+.main-nav-links a {
+  color: rgba(255, 255, 255, 0.85); text-decoration: none;
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 1.8px;
+  text-transform: uppercase; padding: 0 20px;
+  height: 100%; display: flex; align-items: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.main-nav-links a:first-child { border-left: 1px solid rgba(255, 255, 255, 0.12); }
+.main-nav-links a:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+/* Active page, the multi page replacement for the original's section links */
+.main-nav-links a.active {
+  background: rgba(255, 255, 255, 0.12); color: #fff;
+  box-shadow: inset 0 -2px 0 var(--sky-400);
+}
+
+/* More dropdown */
+.more-wrap { position: relative; height: 100%; }
+.more-btn {
+  background: none; border: none; cursor: pointer;
+  color: rgba(255, 255, 255, 0.85); font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 1.8px; text-transform: uppercase; padding: 0 20px;
+  height: 100%; display: flex; align-items: center; gap: 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  transition: background 0.2s; font-family: inherit;
+}
+.more-btn:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.more-arrow { font-size: 0.6rem; transition: transform 0.2s; }
+.more-btn.open .more-arrow { transform: rotate(180deg); }
+.more-dropdown {
+  position: absolute; top: 100%; right: 0;
+  background: rgba(30, 41, 59, 0.97); backdrop-filter: blur(8px);
+  min-width: 200px; padding: 8px 0;
+  opacity: 0; visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.more-dropdown.open { opacity: 1; visibility: visible; transform: translateY(0); }
+.more-dropdown a {
+  display: block; padding: 12px 24px; color: rgba(255, 255, 255, 0.8);
+  text-decoration: none; font-size: 0.8rem; font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
+}
+.more-dropdown a:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+
+/* Hamburger (mobile) */
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 44px; height: 44px;
+  flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+}
+.hamburger span {
+  display: block; width: 26px; height: 2px; background: #fff;
+  border-radius: 2px; transition: transform 0.3s, opacity 0.2s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* Mobile menu overlay. Sits under the header bars, covers the rest. */
+.mobile-menu {
+  display: none; position: fixed; inset: 0;
+  background: var(--slate-900); z-index: 99;
+  flex-direction: column; align-items: center;
+  padding-top: calc(var(--header-h) + 24px);
+  overflow-y: auto;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  display: block; color: #fff; text-decoration: none;
+  font-size: 1.05rem; font-weight: 600; letter-spacing: 2.5px;
+  text-transform: uppercase; padding: 18px 32px;
+  text-align: center; width: 100%; max-width: 400px;
+  transition: background 0.15s;
+}
+.mobile-menu a:hover { background: rgba(255, 255, 255, 0.05); }
+.mobile-menu a.active { color: var(--sky-400); }
+
+/* Responsive: collapse to brand plus hamburger, as in the original */
+@media (max-width: 1024px) {
+  .utility-bar { display: none; }
+  .mid-links { display: none; }
+  .main-nav-links, .more-wrap { display: none; }
+  .hamburger { display: flex; }
+  .mid-bar { height: 60px; }
+  .main-nav { height: 44px; }
+  .location-badge { margin-right: 0; }
+}

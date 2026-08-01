@@ -1,0 +1,52 @@
+[
+  {
+    "id": "casual",
+    "name": "Casual Breather",
+    "desc": "For the air-curious",
+    "price": 9,
+    "popular": false,
+    "cta": "Get Started",
+    "ctaStyle": "secondary",
+    "toast": "🫁 Welcome aboard, Casual Breather!",
+    "perks": [
+      "Up to 23,000 breaths/day",
+      "Standard atmospheric blend",
+      "Email support (we may reply)",
+      "1 nostril optimization"
+    ]
+  },
+  {
+    "id": "power",
+    "name": "Power Inhaler",
+    "desc": "For serious oxygen enthusiasts",
+    "price": 29,
+    "popular": true,
+    "cta": "Start Free Trial",
+    "ctaStyle": "primary",
+    "toast": "🎉 Power Inhaler activated! Take a deep breath.",
+    "perks": [
+      "Unlimited breaths",
+      "3 premium altitude blends",
+      "Priority support (we will reply)",
+      "Dual-nostril optimization",
+      "Monthly Air Report™"
+    ]
+  },
+  {
+    "id": "enterprise",
+    "name": "Enterprise Lung",
+    "desc": "For teams that breathe together",
+    "price": 99,
+    "popular": false,
+    "cta": "Contact Sales",
+    "ctaStyle": "secondary",
+    "toast": "📞 Our Air Sales team will reach out within 1 business breath.",
+    "perks": [
+      "Everything in Power Inhaler",
+      "Dedicated Air Account Manager",
+      "Custom scent profiles",
+      "SSO (Single Sniff-On)",
+      "SLA: 99.9% oxygen uptime"
+    ]
+  }
+]

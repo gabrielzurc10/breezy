@@ -1,0 +1,10 @@
+.stats {
+  background: linear-gradient(135deg, var(--sky-500), var(--violet-500));
+  color: #fff; text-align: center; padding: 72px 24px;
+}
+.stats-grid { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+.stat h2 { font-size: 3.2rem; font-weight: 900; }
+.stat p { font-size: 0.9rem; opacity: 0.85; margin-top: 4px; }
+@media (max-width: 768px) {
+  .stats-grid { gap: 32px; }
+}

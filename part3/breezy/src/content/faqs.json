@@ -1,0 +1,22 @@
+[
+  {
+    "q": "Isn't air already free?",
+    "a": "Technically, yes. But is free air really the air you want to be breathing? Our air comes with a receipt, and that's called peace of mind."
+  },
+  {
+    "q": "What if I forget to breathe?",
+    "a": "That's actually a medical concern and not something we can help with. But our Power Inhaler plan does include breathing reminders via push notification every 4 seconds."
+  },
+  {
+    "q": "Can I cancel anytime?",
+    "a": "You can cancel your subscription anytime! You'll just need to fill out a 23-page form, attend an exit interview with our Air Retention Specialist, and solve a CAPTCHA that's actually a lung capacity test."
+  },
+  {
+    "q": "Is this a real product?",
+    "a": "This is a test site for A/B testing and other experiments. But honestly, at this point in tech, would you really be surprised if someone funded this? We've seen worse on Product Hunt."
+  },
+  {
+    "q": "Do you have an API?",
+    "a": "Yes! Our REST API supports GET /air and POST /exhale endpoints. Rate limited to 12 breaths per minute (we recommend not exceeding this in production or in life)."
+  }
+]

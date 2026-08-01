@@ -1,0 +1,17 @@
+.logos {
+  padding: 48px 24px; text-align: center;
+  border-top: 1px solid var(--sky-100); border-bottom: 1px solid var(--sky-100);
+  background: #fff;
+}
+.logos > p {
+  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
+  color: var(--slate-400); font-weight: 600; margin-bottom: 24px;
+}
+.logo-row {
+  display: flex; justify-content: center; align-items: center;
+  gap: 48px; flex-wrap: wrap; opacity: 0.35;
+}
+.logo-row span {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 1.3rem; color: var(--slate-700);
+}

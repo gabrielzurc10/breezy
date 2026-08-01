@@ -1,0 +1,45 @@
+.pricing { background: #fff; }
+.pricing .center { text-align: center; }
+.pricing .centered { margin: 0 auto; }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; margin-top: 56px;
+}
+.price-card {
+  border: 1.5px solid var(--slate-200); border-radius: var(--radius-lg);
+  padding: 36px 28px; position: relative; background: #fff;
+  transition: transform 0.2s, box-shadow 0.3s, border-color 0.3s;
+}
+.price-card:hover { transform: translateY(-3px); }
+.price-card.popular {
+  border-color: var(--sky-400);
+  box-shadow: 0 0 0 1px var(--sky-400), var(--shadow-xl);
+}
+.price-card.recommended {
+  border-color: var(--violet-500);
+  box-shadow: 0 0 0 2px var(--violet-500), var(--shadow-xl);
+}
+.popular-tag,
+.match-tag {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--sky-500), var(--violet-500));
+  color: #fff; font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1.5px;
+  padding: 4px 16px; border-radius: 100px;
+  white-space: nowrap;
+}
+.match-tag { background: var(--violet-500); }
+/* If a card is both popular and the quiz match, the match tag wins */
+.price-card.recommended .popular-tag { display: none; }
+.price-card h3 { font-size: 1.3rem; margin-bottom: 4px; }
+.price-card .desc { font-size: 0.85rem; color: var(--slate-500); margin-bottom: 20px; }
+.price { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; }
+.price sup { font-size: 1.2rem; top: -1rem; }
+.price sub { font-size: 0.85rem; font-weight: 400; color: var(--slate-500); bottom: 0; }
+.price-card ul { list-style: none; margin: 24px 0; }
+.price-card li {
+  padding: 8px 0; font-size: 0.9rem; color: var(--slate-600);
+  display: flex; align-items: center; gap: 10px; text-align: left;
+}
+.price-card li::before { content: '✓'; color: var(--emerald-500); font-weight: 700; }
+.price-card .btn { width: 100%; justify-content: center; margin-top: 8px; }
