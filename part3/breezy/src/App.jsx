@@ -1,13 +1,12 @@
-import { Suspense, lazy, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { ContentProvider } from './content/index.jsx';
 import { ToastProvider } from './components/Toast.jsx';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
-
-const Home = lazy(() => import('./pages/Home.jsx'));
-const Pricing = lazy(() => import('./pages/Pricing.jsx'));
-const About = lazy(() => import('./pages/About.jsx'));
+import Home from './pages/Home.jsx';
+import Pricing from './pages/Pricing.jsx';
+import About from './pages/About.jsx';
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -30,14 +29,12 @@ export default function App() {
         <ScrollManager />
         <Header />
         <main>
-          <Suspense fallback={null}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/about" element={<About />} />
-              <Route path="*" element={<Home />} />
-            </Routes>
-          </Suspense>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
         </main>
         <Footer />
       </ToastProvider>

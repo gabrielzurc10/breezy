@@ -109,8 +109,6 @@ signup.
 - **Self hosted fonts.** The two typefaces load from the site itself as variable
   fonts (about 75KB total for every weight) with `font-display: swap`, removing the
   Google Fonts round trip that was the original site's largest render blocking cost.
-- **Each page loads only its own code.** Routes are split with React's built in lazy
-  loading;
 - **No heavy libraries and no image weight.** 
 - **Long lived caching.** Build outputs have content hashed filenames, so browsers
   and the CDN cache them indefinitely and repeat visits download almost nothing.
